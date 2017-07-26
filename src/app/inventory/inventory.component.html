@@ -4,12 +4,12 @@
 </p>
 
 <div class="col-md-12 panel-room-collection" *ngIf="addedRoomCollection.length > 0">
-  <div class="well well-sm" *ngFor="let room of addedRoomCollection">
+  <div class="panel-room row" *ngFor="let room of addedRoomCollection">
 
-    <div class="row panel-room-title">
+    <div class="col-md-12 panel-room-title">
 
       <div class="text-center" style="width:5%;">
-        <a class="text-danger" href="#" (click)="showHideRoomDeleteDialogBox(room, true)"><span class="glyphicon glyphicon-trash"></span></a>
+        <button type="button" class="panel-room-title-action" (click)="showHideRoomDeleteDialogBox(room, true)"><span class="glyphicon glyphicon-trash"></span></button>
       </div>
       <div class="panel-room-title-info">
         {{room.name}}
@@ -18,7 +18,7 @@
         Nombre de biens : <b>{{room.itemQuantity}}</b> &nbsp; | &nbsp; Volume: <b>{{room.volume}}</b> m<sup>3</sup>
       </div>
       <div class="text-center" style="width:5%;">
-        <a href="#" (click)="showHide(room)"><span class="glyphicon" [ngClass]="(room.isFocused) ? 'glyphicon-chevron-up' : ' glyphicon-chevron-down'"></span></a>
+        <button type="button" class="panel-room-title-action" (click)="showHide(room)"><span class="glyphicon" [ngClass]="(room.isFocused) ? 'glyphicon-chevron-up' : ' glyphicon-chevron-down'"></span></button>
       </div>
       <div class="delete-room-box" *ngIf="room.displayDeleteBox" [@displayRoomDeleteBox]>
 
@@ -29,10 +29,9 @@
         <div class="text-center delete-room-box-cancel" (click)="showHideRoomDeleteDialogBox(room,false)">NON</div>
       </div>
     </div>
-    <div class="row" *ngIf="room.isFocused"  style="overflow: hidden;" >
-      <hr/>
+    <div class="col-md-12" *ngIf="room.isFocused"  style="overflow: hidden;" >
       <div [@displayRoomInventory]>
-      <app-room [room]="room"></app-room>
+      <app-room (newItemCreated)="passItemToParent($event)" [room]="room"></app-room>
       </div>
     </div>
   </div>

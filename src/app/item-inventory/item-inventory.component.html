@@ -11,8 +11,9 @@
     </p>
   </div>
   <div class="item-quantity">
-    <button (click)="removeElement($event)" class="btn btn-default" type="button"><i class="glyphicon glyphicon-minus"></i></button><span>{{inventoryItem.quantity}}</span><button (click)="addElement($event)"
-      type="button" class="btn btn-default" ><i class="glyphicon glyphicon-plus"></i></button>
+    <button (click)="removeElement($event)" class="btn btn-default" type="button"><i class="glyphicon glyphicon-minus"></i></button>
+    <input min="1" step="10" type="number" (click)="$event.stopPropagation();" [(ngModel)]="inventoryItem.quantity" />
+    <button (click)="addElement($event)" type="button" class="btn btn-default" ><i class="glyphicon glyphicon-plus"></i></button>
   </div>
   <!--
 <li class="item" (click)="addElement($event)">

@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@angular/core';
 import { trigger, style, transition, animate, group } from '@angular/animations';
 
+import { InventoryItemService } from '../service/inventory-item.service';
 import { Room } from '../model/room';
 import { InventoryItem } from '../model/inventory-item';
 @Component({
@@ -30,24 +31,28 @@ import { InventoryItem } from '../model/inventory-item';
 
 export class RoomComponent implements OnInit {
   @Input() room: Room;
+  @Output() newItemCreated = new EventEmitter();
   showSearchPanel = false;
+  error: string;
+  newItemName: string;
+  newItemWidth: number;
+  newItemLength: number;
+  newItemHeight: number;
+  showNewItemBox = false;
 
   get inventoryItemCollection(): InventoryItem[] {
         return this.room.searchingInventoryItemCollection.filter(item => item.quantity > 0);
     }
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, private inventoryItemService: InventoryItemService) { }
 
   ngOnInit() {
   }
 
   outRoomClickListener(event) {
-    if (!this.elementRef.nativeElement.contains(event.target)) {
-      this.showSearchPanel = false;
-      return;
-    }
+
     let element: HTMLElement = event.target;
     while (element) {
-      if (element.className === 'search-panel') {
+      if (element.className.includes('search-panel')) {
         return;
       }
       element = element.parentElement;
@@ -60,6 +65,43 @@ export class RoomComponent implements OnInit {
 
   get isOkForSummary() {
     return this.inventoryItemCollection.some(item => item.quantity > 0);
+  }
+
+  openCloseNewItemBox(show: boolean) {
+
+    this.showNewItemBox = show;
+    this.error = '';
+    this.newItemName = '';
+    this.newItemWidth = null;
+    this.newItemLength = null;
+    this.newItemHeight = null;
+
+  }
+
+  createNewItem() {
+    if (this.newItemName !== '' && this.verifNumbers()) {
+      let tmpItem = this.inventoryItemService.createItem(
+        this.newItemName,
+        this.newItemLength,
+        this.newItemWidth,
+        this.newItemHeight
+      );
+      if (tmpItem) {
+        this.openCloseNewItemBox(false);
+        this.newItemCreated.next(tmpItem);
+      } else {
+        this.error = 'Impossible de créer l\'objet';
+      }
+    } else {
+      this.error = 'Les valeurs indiqués ne sont pas conformes.'
+    }
+  }
+
+  verifNumbers() {
+    const values = [this.newItemHeight, this.newItemLength, this.newItemWidth];
+    return (
+      values.every(value => value > 0 && value !== null && isFinite(value))
+    );
   }
 
 }

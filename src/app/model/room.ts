@@ -32,16 +32,16 @@ export class Room {
         return this._itemQuantity;
     }
 
-    private _DisplayToResume = false;
-    public get displayToResume(): boolean {
-        this._DisplayToResume = this.searchingInventoryItemCollection.some(item => item.quantity > 0);
-        return this._DisplayToResume;
+    private _DisplayToSummary = false;
+    public get displayToSummary(): boolean {
+        this._DisplayToSummary = this.searchingInventoryItemCollection.some(item => item.quantity > 0);
+        return this._DisplayToSummary;
     }
 
-    private _inventoryForResume: InventoryItem[];
-    public get inventoryForResume(): InventoryItem[] {
-        this._inventoryForResume = this.searchingInventoryItemCollection.filter(item => item.quantity > 0);
-        return this._inventoryForResume;
+    private _inventoryForSummary: InventoryItem[];
+    public get inventoryForSummary(): InventoryItem[] {
+        this._inventoryForSummary = this.searchingInventoryItemCollection.filter(item => item.quantity > 0);
+        return this._inventoryForSummary;
     }
 
 

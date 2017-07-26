@@ -1,10 +1,62 @@
-<div class="search-panel" style="background-color: lightgray;">
-  <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-    <input (click)="activateSearchPanel()" type="text" class="form-control query" [(ngModel)]="query" placeholder="Trouver des objets..." />
+<div class="search-panel row form-group">
+
+  <!-- Input de recherche -->
+  <div class="col-md-5">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+      <input (click)="activateSearchPanel()" type="text" class="form-control query" [(ngModel)]="query" placeholder="Trouver des objets..." />
+    </div>
   </div>
 
-  
+  <!-- bouton + ajout d'item -->
+  <div class="col-md-offset-2 col-md-5">
+    <button (click)="openCloseNewItemBox(true)" *ngIf="!showNewItemBox" type="button" class="btn btn-default btn-block room-action-button"><i class="glyphicon glyphicon-plus"></i>Ajouter un objet personnalisé</button>
+    <div *ngIf="showNewItemBox" class="room-new-item-box">
+      <div class="room-new-item-box-close" (click)="openCloseNewItemBox(false)">&times;</div>
+      <div class="media">
+        <div class="media-left">
+          <i style="font-size:2em;" class="glyphicon glyphicon-question-sign"></i>
+        </div>
+        <div class="media-body">
+          <h5 class="media-heading"><b>Vous ne trouvez pas votre objet ? Ajoutez-le.</b></h5>
+        </div>
+      </div>
+      <div *ngIf="error !== ''" class="row">
+        <p class="col-md-12 text-danger">
+          {{error}}
+        </p>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-12">
+          <input class="form-control" [(ngModel)]="newItemName" type="text" placeholder="Nom de l'objet" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <input class="form-control" [(ngModel)]="newItemWidth" type="text" placeholder="Largeur*" />
+        </div>
+        <div class="col-md-4">
+          <input class="form-control" [(ngModel)]="newItemLength" type="text" placeholder="Longueur*" />
+        </div>
+        <div class="col-md-4">
+          <input class="form-control" [(ngModel)]="newItemHeight" type="text" placeholder="Hauteur*" />
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-12">
+          <small><sup>*</sup>Les valeurs à indiquer sont en cm</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+          <button (click)="createNewItem()" type="button" class="btn btn-default btn-block room-action-button">
+                  <i class="glyphicon glyphicon-ok"></i> Créer
+                </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div *ngIf="showSearchPanel" [@displaySearchBox]>
     <ul class="item-collection">
       <li *ngFor="let inventory of room.searchingInventoryItemCollection | filterItem:query">
@@ -20,6 +72,6 @@
   </li>
 </ul>
 
-<p *ngIf="!room.inventoryItemCollection || room.inventoryItemCollection.length <= 0" >
+<p *ngIf="!room.inventoryItemCollection || room.inventoryItemCollection.length <= 0">
   Aucun élément n'a été ajouté à l'inventaire de cette pièce.
 </p>

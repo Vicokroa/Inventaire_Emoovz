@@ -17,9 +17,52 @@ fourth-quadri = #333333
     margin-right: -12px
     margin-left: -12px
     border-radius: 5px
+    margin-bottom: 1em
 .inventory-section
     min-height: 150px
-
-
+.app-action-bar
+    position: relative
 .room-list
+    background-color: white
     list-style: none
+    position: absolute
+    padding: 0
+    border: 2px solid third-quadri
+    border-top: none
+    display: flex
+    z-index: 999
+    flex-flow: column nowrap
+    justify-content: space-between
+    width: 100%
+    & li
+        display: inline-flex
+        flex-flow: row nowrap
+        justify-content: space-between
+        padding: 1em
+        transition: all 200ms ease-in
+        cursor: pointer
+        & .glyphicon
+            color: magenta-persan
+        & *
+            cursor: pointer
+    & li:not(:first-child)
+        border-top: 1px solid first-quadri
+    & li:last-child
+        border-top: 2px solid first-quadri
+    & li.add-room-dialog
+        cursor: default
+        & *
+            cursor: auto
+        & input
+            color: fourth-quadri
+    & li:hover
+        background-color: first-quadri
+        color: white
+        & .glyphicon
+            color: third-quadri
+.app-action-button
+    font-weight: bold
+    color: third-quadri
+    background-color: transparent
+    border: 2px solid third-quadri
+    outline: none

@@ -40,6 +40,7 @@ import { InventoryItem } from '../model/inventory-item';
 export class InventoryComponent implements OnInit {
   @Input() addedRoomCollection: Room[];
   @Output() deleteRoom = new EventEmitter();
+  @Output() newItemCreated = new EventEmitter();
   displayDeleteBox = false;
 
 
@@ -65,6 +66,10 @@ export class InventoryComponent implements OnInit {
     this.addedRoomCollection.forEach(_room => _room.isFocused = false);
     }
     room.isFocused = !room.isFocused;
+  }
+
+  passItemToParent(item: InventoryItem) {
+    this.newItemCreated.next(item);
   }
 
 }

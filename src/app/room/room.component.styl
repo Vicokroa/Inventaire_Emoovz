@@ -1,22 +1,94 @@
+ //  ***********
+//   Variables
+//  ***********
+
+//Logotype
+violet-dahlia = #4c448f
+magenta-persan = #e54380
+
+//Quadrichromie
+first-quadri = #9857bd
+second-quadri = #322e64
+third-quadri = #17bdcf
+fourth-quadri = #333333
+ 
  .item-collection
     /*margin:0 auto;*/
     list-style-type: none
-    padding: 2em
+    padding: 1em
     display: inline-flex
     flex-flow: row wrap
     justify-content: flex-start
     width: 100%
+   
 
-.query
-    border: none
-    border-top: 1px solid lightgrey
-    border-bottom: 1px solid lightgrey
-    border-bottom-right-radius: 0
-    transition: all 300ms ease-in
-    &:focus
-        border-bottom: 2px solid grey
+
 .search-panel
     border-top-left-radius: 5px
     border-top-right-radius: 5px
     overflow: hidden
+    margin-top: 10px
+    & .item-collection
+         background-color: lighten(second-quadri, 65%)
+
+.input-group-addon
+    color: white
+    background-color: first-quadri
+    border: none
+    border-bottom: 1px solid first-quadri
+
+.room-action-button
+    font-weight: bold
+    background-color: transparent
+    color: first-quadri
+    border: 2px solid first-quadri
+    outline: none
+
+.room-new-item-box
+    padding: 0.2em
+    position: relative
+    background-color: white
+    width: 100%
+    height: 100%
+    border: 2px solid first-quadri
+    color: first-quadri
+    border-radius: 5px
+    & .room-action-button
+        color: third-quadri
+        border: 2px solid third-quadri
+
+.room-new-item-box-close
+    position: absolute
+    top: 5px
+    right: 10px
+    font-size: 1.5em
+    font-weight: bold
+    cursor: pointer
+    color: violet-dahlia
+    display: inline-block
+.form-control
+    border: none
+    border-bottom: 1px solid first-quadri
+    font-size: 0.75em
+    box-shadow: none
+    transition: all 200ms ease-in
+    &:focus
+        border-bottom: 2px solid second-quadri
+    &::-webkit-input-placeholder
+        color: lighten(first-quadri, 25%)
+        font-style: italic
+    &:-moz-placeholder
+        color: lighten(first-quadri, 25%)
+        font-style: italic
+    &::-moz-placeholder
+        color: lighten(first-quadri, 25%)
+        font-style: italic
+    &::-ms-input-placeholder
+        color: lighten(first-quadri, 25%)
+        font-style: italic
+    &:-ms-input-placeholder
+        color: lighten(first-quadri, 25%)
+        font-style: italic
+
+
     

@@ -9,6 +9,7 @@ export class InventoryItem {
 
     private _volume = 0;
     public get volume(): number {
+        // cm3 => m3 alors division par 1 000 000
         this._volume = Math.round((this.quantity * (this.height * this.length * this.depth / 1000000)) * 100) / 100;
         return this._volume;
     }

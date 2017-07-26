@@ -20,8 +20,16 @@ fourth-quadri = #333333
   flex-direction: column
   justify-content: flex-start
   padding: 15px
+.panel-room
+    background-color: white
+    border-radius: 5px
+    border-bottom: solid 2px violet-dahlia
+    margin-top: 15px
+    &:first-child
+        margin-top: 0
 
 .panel-room-title
+    color: white
     width: 100%;
     display: inline-flex;
     flex-direction: row;
@@ -30,12 +38,24 @@ fourth-quadri = #333333
     position: relative
     min-height: 35px
     overflow: hidden
+    border-radius: 5px 5px 0 0
+    background-color: violet-dahlia
 
 .panel-room-title-info
   flex-grow: 1
   padding-left: 5px
   font-weight: bold
-
+  font-size: 1.2em
+.panel-room-title-action
+    background-color: white
+    color: violet-dahlia
+    padding: 4px 5px
+    border-radius: 50%
+    transition: all 200ms ease-in
+    font-size: 1.2em
+    border: none
+    &:hover
+        background-color: magenta-persan
 
  .delete-room-box
       position: absolute
@@ -46,6 +66,7 @@ fourth-quadri = #333333
       width: 55%
       top: 0
       left: 0
+      border-top-left-radius: 5px
   .delete-room-box-ask
       background-color: #dadada
       font-weight: bolder
@@ -57,11 +78,10 @@ fourth-quadri = #333333
       width: 15%
       cursor: pointer
       transition: all 200ms ease-in
-      &:hover {
+      &:hover
           background-color: darken(rgb(000, 158, 015), 15%)
           box-shadow: 0 0 10px rgb(000, 158, 015)
           z-index: 9999
-      }
   .delete-room-box-cancel
       padding: 2%
       background-color: rgb(207, 042, 039)

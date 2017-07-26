@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Room } from './model/room';
+import { InventoryItem } from './model/inventory-item';
 import { InventoryItemService } from './service/inventory-item.service';
 
 @Component({
@@ -12,9 +13,11 @@ export class AppComponent {
   title = 'Inventaire';
   roomCollection: Room[] = [];
   displayList = false;
+  showAddRoomDialog = false;
+  newRoom: string;
   roomCollectionForInventory: Room[] = [];
   get roomCollectionForSummary(): Room[] {
-    return this.roomCollectionForInventory.filter(_room => _room.itemQuantity > 0);
+    return this.roomCollectionForInventory.filter(_room => _room.displayToSummary);
   }
 
   constructor(private inventoryService: InventoryItemService) {}
@@ -36,10 +39,28 @@ export class AppComponent {
 
   hideRoomList() {
     this.displayList = false;
+    this.newRoom = '';
   }
 
   toggleRoomList() {
     this.displayList = !this.displayList;
+    this.newRoom = '';
+    this.showAddRoomDialog = false;
+  }
+
+  showRoomDialog() {
+    this.showAddRoomDialog = true;
+    this.newRoom = '';
+  }
+
+  validateNewRoom() {
+    if (this.newRoom !== '') {
+      let tmpRoom = this.inventoryService.createRoom(this.roomCollection.length + 1, this.newRoom);
+      this.roomCollection = [...this.roomCollection, tmpRoom];
+      this.checkRoomForInventory(tmpRoom);
+      this.showAddRoomDialog = false;
+      this.newRoom = '';
+    }
   }
 
   checkRoomForInventory(room: Room) {
@@ -51,6 +72,12 @@ export class AppComponent {
     } else {
       this.roomCollectionForInventory.splice(this.roomCollectionForInventory.findIndex(_room => _room.id === room.id), 1);
     }
+  }
+
+  addNewItemToRoom(item: InventoryItem) {
+    this.roomCollection.forEach(room => {
+      room.searchingInventoryItemCollection = [item, ...room.searchingInventoryItemCollection];
+    });
   }
 
 
