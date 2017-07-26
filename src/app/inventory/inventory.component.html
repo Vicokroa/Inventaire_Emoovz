@@ -1,0 +1,39 @@
+<p class="col-md-11 text-right" *ngIf="addedRoomCollection.length <= 0">
+  Commencez par ajouter une pièce
+  <img style="vertical-align: text-bottom; width: 120px;" src="assets/arrow-begin.svg" />
+</p>
+
+<div class="col-md-12 panel-room-collection" *ngIf="addedRoomCollection.length > 0">
+  <div class="well well-sm" *ngFor="let room of addedRoomCollection">
+
+    <div class="row panel-room-title">
+
+      <div class="text-center" style="width:5%;">
+        <a class="text-danger" href="#" (click)="showHideRoomDeleteDialogBox(room, true)"><span class="glyphicon glyphicon-trash"></span></a>
+      </div>
+      <div class="panel-room-title-info">
+        {{room.name}}
+      </div>
+      <div>
+        Nombre de biens : <b>{{room.itemQuantity}}</b> &nbsp; | &nbsp; Volume: <b>{{room.volume}}</b> m<sup>3</sup>
+      </div>
+      <div class="text-center" style="width:5%;">
+        <a href="#" (click)="showHide(room)"><span class="glyphicon" [ngClass]="(room.isFocused) ? 'glyphicon-chevron-up' : ' glyphicon-chevron-down'"></span></a>
+      </div>
+      <div class="delete-room-box" *ngIf="room.displayDeleteBox" [@displayRoomDeleteBox]>
+
+        <div class="text-left delete-room-box-ask">
+          SUPPRIMER ?
+        </div>
+        <div class="text-center delete-room-box-ok" (click)="removeRoom(room)">OUI</div>
+        <div class="text-center delete-room-box-cancel" (click)="showHideRoomDeleteDialogBox(room,false)">NON</div>
+      </div>
+    </div>
+    <div class="row" *ngIf="room.isFocused"  style="overflow: hidden;" >
+      <hr/>
+      <div [@displayRoomInventory]>
+      <app-room [room]="room"></app-room>
+      </div>
+    </div>
+  </div>
+</div>

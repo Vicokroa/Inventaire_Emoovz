@@ -1,0 +1,40 @@
+<li class="item media" (click)="addElement($event)">
+  <div class="media-left">
+
+    <img src="https://www.emoovz.com/uploads/item/images/57ca2acbe28edeb7b366b88957920de31872af93.png" />
+  </div>
+  <div class="media-body">
+    <h5 class="media-heading"><b>{{inventoryItem.name}}</b></h5>
+    <p>
+      <span class="item-info">{{inventoryItem.length}}&times;{{inventoryItem.height}}&times;{{inventoryItem.depth}}</span>
+      <span class="item-legend">(l&times;h&times;L)</span>
+    </p>
+  </div>
+  <div class="item-quantity">
+    <button (click)="removeElement($event)" class="btn btn-default" type="button"><i class="glyphicon glyphicon-minus"></i></button><span>{{inventoryItem.quantity}}</span><button (click)="addElement($event)"
+      type="button" class="btn btn-default" ><i class="glyphicon glyphicon-plus"></i></button>
+  </div>
+  <!--
+<li class="item" (click)="addElement($event)">
+<img src="https://www.emoovz.com/uploads/item/images/57ca2acbe28edeb7b366b88957920de31872af93.png" />
+<div class="item-etiq">
+  <span class="item-name">{{inventoryItem.name}}</span>
+  <br/>
+  <span class="item-info">{{inventoryItem.length}}&times;{{inventoryItem.height}}&times;{{inventoryItem.depth}}</span>
+  <span class="item-legend">(l&times;h&times;L)</span>
+</div>
+<div class="item-quantity">
+  <button (click)="removeElement($event)" type="button">-</button><span>{{inventoryItem.quantity}}</span><button (click)="addElement($event)" type="button" >+</button>
+</div>
+-->
+  <div class="delete-item-box" *ngIf="displayDeleteBox" [@displayDeleteBox] (click)="$event.stopPropagation();">
+
+    <div class="text-center delete-item-box-ask">
+      SUPPRIMER ?
+    </div>
+    <div class="delete-item-box-confirm">
+      <div class="text-center delete-item-box-ok" (click)="deleteConfirm($event)">OUI</div>
+      <div class="text-center delete-item-box-cancel" (click)="deleteCancel($event)">NON</div>
+    </div>
+  </div>
+</li>

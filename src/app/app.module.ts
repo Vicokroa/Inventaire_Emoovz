@@ -1,16 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { FilterItemPipe } from './pipe/filter-item.pipe';
+import { InventoryItemService } from './service/inventory-item.service';
 
 import { AppComponent } from './app.component';
+import { ItemInventoryComponent } from './item-inventory/item-inventory.component';
+import { RoomComponent } from './room/room.component';
+import { SummaryComponent } from './summary/summary.component';
+import { InventoryComponent } from './inventory/inventory.component';
+import { SelectedRoomsPipe } from './pipe/selected-rooms.pipe';
+import { ItemSelectedPipe } from './pipe/item-selected.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FilterItemPipe,
+    ItemInventoryComponent,
+    RoomComponent,
+    SummaryComponent,
+    InventoryComponent,
+    SelectedRoomsPipe,
+    ItemSelectedPipe,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [InventoryItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

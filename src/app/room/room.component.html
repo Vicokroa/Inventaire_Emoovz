@@ -1,0 +1,25 @@
+<div class="search-panel" style="background-color: lightgray;">
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+    <input (click)="activateSearchPanel()" type="text" class="form-control query" [(ngModel)]="query" placeholder="Trouver des objets..." />
+  </div>
+
+  
+  <div *ngIf="showSearchPanel" [@displaySearchBox]>
+    <ul class="item-collection">
+      <li *ngFor="let inventory of room.searchingInventoryItemCollection | filterItem:query">
+        <app-item-inventory [inventoryItem]="inventory"></app-item-inventory>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<ul *ngIf="room.inventoryItemCollection && room.inventoryItemCollection.length > 0" class="item-collection">
+  <li *ngFor="let inventory of room.inventoryItemCollection">
+    <app-item-inventory [inventoryItem]="inventory"></app-item-inventory>
+  </li>
+</ul>
+
+<p *ngIf="!room.inventoryItemCollection || room.inventoryItemCollection.length <= 0" >
+  Aucun élément n'a été ajouté à l'inventaire de cette pièce.
+</p>

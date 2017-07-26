@@ -1,0 +1,75 @@
+//  ***********
+//   Variables
+//  ***********
+
+//Logotype
+violet-dahlia = #4c448f
+magenta-persan = #e54380
+
+//Quadrichromie
+first-quadri = #9857bd
+second-quadri = #322e64
+third-quadri = #17bdcf
+fourth-quadri = #333333
+
+.title-room-panel
+  background-color: lightgrey
+
+.panel-room-collection
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  padding: 15px
+
+.panel-room-title
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: relative
+    min-height: 35px
+    overflow: hidden
+
+.panel-room-title-info
+  flex-grow: 1
+  padding-left: 5px
+  font-weight: bold
+
+
+ .delete-room-box
+      position: absolute
+      display: inline-flex
+      flex-flow: row
+      color: white
+      height: 100%
+      width: 55%
+      top: 0
+      left: 0
+  .delete-room-box-ask
+      background-color: #dadada
+      font-weight: bolder
+      padding: 2%
+      width: 70%
+  .delete-room-box-ok
+      padding: 2%
+      background-color: rgb(000, 158, 015)
+      width: 15%
+      cursor: pointer
+      transition: all 200ms ease-in
+      &:hover {
+          background-color: darken(rgb(000, 158, 015), 15%)
+          box-shadow: 0 0 10px rgb(000, 158, 015)
+          z-index: 9999
+      }
+  .delete-room-box-cancel
+      padding: 2%
+      background-color: rgb(207, 042, 039)
+      width: 15%
+      cursor: pointer
+      transition: all 200ms ease-in
+      &:hover {
+          background-color: darken(rgb(207, 042, 039), 15%)
+          box-shadow: 0 0 10px rgb(207, 042, 039)
+          z-index: 9999
+      }
