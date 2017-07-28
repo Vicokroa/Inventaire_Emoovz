@@ -26,6 +26,7 @@ import { InventoryItem } from '../model/inventory-item';
 export class ItemInventoryComponent implements OnInit {
   @Input() inventoryItem: InventoryItem;
   displayDeleteBox = false;
+  private previousQuantity = 0;
 
   constructor() { }
 
@@ -56,5 +57,15 @@ export class ItemInventoryComponent implements OnInit {
       this.inventoryItem.quantity--;
     }
 
+  }
+
+  inputEnter() {
+    this.previousQuantity = this.inventoryItem.quantity;
+  }
+
+  inputOut() {
+    if (isNaN(this.inventoryItem.quantity)) {
+      this.inventoryItem.quantity = this.previousQuantity;
+    }
   }
 }

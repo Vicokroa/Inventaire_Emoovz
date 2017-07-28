@@ -12,22 +12,10 @@
   </div>
   <div class="item-quantity">
     <button (click)="removeElement($event)" class="btn btn-default" type="button"><i class="glyphicon glyphicon-minus"></i></button>
-    <input min="1" step="10" type="number" (click)="$event.stopPropagation();" [(ngModel)]="inventoryItem.quantity" />
+    <input (focusin)="inputEnter()" (focusout)="inputOut()" (click)="$event.stopPropagation();" [(ngModel)]="inventoryItem.quantity" />
     <button (click)="addElement($event)" type="button" class="btn btn-default" ><i class="glyphicon glyphicon-plus"></i></button>
   </div>
-  <!--
-<li class="item" (click)="addElement($event)">
-<img src="https://www.emoovz.com/uploads/item/images/57ca2acbe28edeb7b366b88957920de31872af93.png" />
-<div class="item-etiq">
-  <span class="item-name">{{inventoryItem.name}}</span>
-  <br/>
-  <span class="item-info">{{inventoryItem.length}}&times;{{inventoryItem.height}}&times;{{inventoryItem.depth}}</span>
-  <span class="item-legend">(l&times;h&times;L)</span>
-</div>
-<div class="item-quantity">
-  <button (click)="removeElement($event)" type="button">-</button><span>{{inventoryItem.quantity}}</span><button (click)="addElement($event)" type="button" >+</button>
-</div>
--->
+ 
   <div class="delete-item-box" *ngIf="displayDeleteBox" [@displayDeleteBox] (click)="$event.stopPropagation();">
 
     <div class="text-center delete-item-box-ask">
