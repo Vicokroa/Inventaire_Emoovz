@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { Room } from './model/room';
 import { InventoryItem } from './model/inventory-item';
 import { InventoryItemService } from './service/inventory-item.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.styl']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'Inventaire';
   roomCollection: Room[] = [];
   displayList = false;
@@ -22,7 +23,6 @@ export class AppComponent {
 
   constructor(private inventoryService: InventoryItemService) {}
 
-  // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
     this.inventoryService.getRooms()
       .then(rooms => {
@@ -35,6 +35,16 @@ export class AppComponent {
           console.error(error);
         }
       )
+  }
+
+  ngAfterViewInit() {
+    $(window).on('scroll', function () {
+      if ($(this).scrollTop() > 200) {
+        $('.summary-section').addClass('fixedSummary');
+      } else {
+        $('.summary-section').removeClass('fixedSummary');
+      }
+    })
   }
 
   hideRoomList() {
