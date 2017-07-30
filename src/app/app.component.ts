@@ -86,7 +86,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   addNewItemToRoom(item: InventoryItem) {
     this.roomCollection.forEach(room => {
-      room.searchingInventoryItemCollection = [item, ...room.searchingInventoryItemCollection];
+      room.searchingInventoryItemCollection = [
+        new InventoryItem(item.id, item.name, item.quantity, item.length, item.height, item.depth),
+         ...room.searchingInventoryItemCollection];
     });
   }
 
