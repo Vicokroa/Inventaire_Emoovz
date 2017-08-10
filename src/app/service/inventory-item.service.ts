@@ -13,12 +13,18 @@ let INVENTORYITEMS: InventoryItem[] = [
   new InventoryItem(7, 'Casiers ou tout plein d\'autres trucs', 0, 40, 40, 60),
   new InventoryItem(8, 'Lit simple', 0, 40, 40, 60),
   new InventoryItem(9, 'Lit double', 0, 40, 40, 60),
-  new InventoryItem(10, 'Lave-linge', 0, 40, 40, 60),
-  new InventoryItem(11, 'Meulbe bas', 0, 63, 52, 31)
+  new InventoryItem(10, 'Grand carton', 0, 55, 35, 30),
+  new InventoryItem(11, 'Petit carton', 0, 35, 27.5, 30),
+  new InventoryItem(12, 'Canapé 2 places', 0, 63, 52, 31),
+  new InventoryItem(13, 'Canapé 3 places', 0, 63, 52, 31),
+  new InventoryItem(14, 'Canapé d\'angle', 0, 63, 52, 31),
+  new InventoryItem(15, 'Clic-clac', 0, 63, 52, 31),
+  new InventoryItem(16, 'Table 2-4 personnes', 0, 63, 52, 31),
+  new InventoryItem(16, 'Table 6-8 personnes', 0, 63, 52, 31),
 ];
 
 
-let ROOMS: Room[] = [
+const ROOMS: Room[] = [
   new Room(1, 'Salon', []),
   new Room(2, 'Cuisine', []),
   new Room(3, 'Bureau', []),
