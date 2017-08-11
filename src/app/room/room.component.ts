@@ -39,6 +39,7 @@ export class RoomComponent implements OnInit {
   newItemLength: number;
   newItemHeight: number;
   showNewItemBox = false;
+  takeMax = 9;
 
   get inventoryItemCollection(): InventoryItem[] {
         return this.room.searchingInventoryItemCollection.filter(item => item.quantity > 0);

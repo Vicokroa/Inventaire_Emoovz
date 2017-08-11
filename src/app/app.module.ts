@@ -13,6 +13,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { SelectedRoomsPipe } from './pipe/selected-rooms.pipe';
 import { ItemSelectedPipe } from './pipe/item-selected.pipe';
+import { TakePipe } from './pipe/take.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ItemSelectedPipe } from './pipe/item-selected.pipe';
     InventoryComponent,
     SelectedRoomsPipe,
     ItemSelectedPipe,
+    TakePipe,
   ],
   imports: [
     BrowserModule,

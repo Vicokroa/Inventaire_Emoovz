@@ -34,6 +34,7 @@ export class ItemInventoryComponent implements OnInit {
   }
 
   addElement(event) {
+    console.log('Add elemnt', typeof (this.inventoryItem.quantity));
     event.stopPropagation();
     this.inventoryItem.quantity++;
   }
@@ -51,6 +52,7 @@ export class ItemInventoryComponent implements OnInit {
 
   removeElement(event) {
     event.stopPropagation();
+    console.log('Remove elemnt', typeof (this.inventoryItem.quantity));
     if (this.inventoryItem.quantity === 1) {
       this.displayDeleteBox = true;
     } else if (this.inventoryItem.quantity > 1) {
@@ -60,12 +62,14 @@ export class ItemInventoryComponent implements OnInit {
   }
 
   inputEnter() {
-    this.previousQuantity = this.inventoryItem.quantity;
+    // this.previousQuantity = this.inventoryItem.quantity;
+    console.log('input enter', typeof (this.inventoryItem.quantity));
   }
 
   inputOut() {
-    if (isNaN(this.inventoryItem.quantity)) {
-      this.inventoryItem.quantity = this.previousQuantity;
-    }
+    console.log('input out', typeof (this.inventoryItem.quantity));
+    // if (isNaN(this.inventoryItem.quantity)) {
+      // this.inventoryItem.quantity = this.previousQuantity;
+    // }
   }
 }

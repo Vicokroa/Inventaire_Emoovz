@@ -27,7 +27,7 @@ export class Room {
 
         this._itemQuantity = 0;
         this.searchingInventoryItemCollection.forEach(item => {
-            this._itemQuantity += item.quantity;
+            this._itemQuantity += +item.quantity;
         });
         return this._itemQuantity;
     }

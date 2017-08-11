@@ -59,7 +59,7 @@
 
   <div *ngIf="showSearchPanel" [@displaySearchBox]>
     <ul class="item-collection">
-      <li *ngFor="let inventory of room.searchingInventoryItemCollection | filterItem:query">
+      <li *ngFor="let inventory of room.searchingInventoryItemCollection | filterItem:query |  take:takeMax">
         <app-item-inventory [inventoryItem]="inventory"></app-item-inventory>
       </li>
     </ul>
