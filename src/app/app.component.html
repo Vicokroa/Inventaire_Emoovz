@@ -1,6 +1,10 @@
 <!--The whole content below can be removed with the new code.-->
 <h1 class="text-center">
-  {{title}}
+  <span class="fa-stack">
+    <i class="fa fa-circle fa-stack-2x text-info"></i>
+    <i class="fa fa-cubes fa-stack-1x fa-inverse"></i>
+  </span>
+ {{title}}
 </h1>
 <div class="container">
   <div class="row form-group">
@@ -8,23 +12,23 @@
       <div class="row">
         <div class="col-md-offset-8 col-md-4">
           <button class="btn btn-block app-action-button" (click)="toggleRoomList()" type="button">
-            <ng-container *ngIf="!displayList"><span class="glyphicon glyphicon-plus"></span> Ajouter une pièce</ng-container>
-            <ng-container *ngIf="displayList"><span class="glyphicon glyphicon-remove"></span> Fermer la liste</ng-container>
+            <ng-container *ngIf="!displayList"><span class="fa fa-plus"></span> Ajouter une pièce</ng-container>
+            <ng-container *ngIf="displayList"><span class="fa fa-times"></span> Fermer la liste</ng-container>
           </button>
           <div *ngIf="displayList">
             <div class="app-action-bar" *ngIf="roomCollection.length > 0">
               <ul class="room-list">
                 <li *ngFor="let room of roomCollection" (click)="checkRoomForInventory(room); return ;">
                   <label for="{{room.name}}">{{ room.name }}</label>
-                  <span *ngIf="room.selected" class="glyphicon glyphicon-ok"></span>
+                  <span *ngIf="room.selected" class="fa fa-check"></span>
                 </li>
                 <li *ngIf="!showAddRoomDialog" (click)="showRoomDialog()">
                   <label>Pièce personnalisée</label>
-                  <span class="glyphicon glyphicon-plus"></span>
+                  <span class="fa fa-plus"></span>
                 </li>
                 <li class="add-room-dialog" *ngIf="showAddRoomDialog">
-                  <input [(ngModel)]="newRoom" placeholder="nom de la pièce" >
-                  <button (click)="validateNewRoom()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+                  <input [(ngModel)]="newRoom" placeholder="nom de la pièce">
+                  <button (click)="validateNewRoom()" type="button" class="btn btn-default"><span class="fa fa-plus"></span></button>
                 </li>
               </ul>
             </div>
@@ -50,4 +54,3 @@
     </div>
   </div>
 </div>
-

@@ -3,19 +3,19 @@
   <!-- Input de recherche -->
   <div class="col-md-5">
     <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+      <span class="input-group-addon"><i class="fa fa-search"></i></span>
       <input (click)="activateSearchPanel()" type="text" class="form-control query" [(ngModel)]="query" placeholder="Trouver des objets..." />
     </div>
   </div>
 
   <!-- bouton + ajout d'item -->
   <div class="col-md-offset-2 col-md-5">
-    <button (click)="openCloseNewItemBox(true)" *ngIf="!showNewItemBox" type="button" class="btn btn-default btn-block room-action-button"><i class="glyphicon glyphicon-plus"></i>Ajouter un objet personnalisé</button>
+    <button (click)="openCloseNewItemBox(true)" *ngIf="!showNewItemBox" type="button" class="btn btn-default btn-block room-action-button"><i class="fa fa-plus"></i>Ajouter un objet personnalisé</button>
     <div *ngIf="showNewItemBox" class="room-new-item-box">
       <div class="room-new-item-box-close" (click)="openCloseNewItemBox(false)">&times;</div>
       <div class="media">
         <div class="media-left">
-          <i style="font-size:2em;" class="glyphicon glyphicon-question-sign"></i>
+          <i style="font-size:2em;" class="fa fa-question-sign"></i>
         </div>
         <div class="media-body">
           <h5 class="media-heading"><b>Vous ne trouvez pas votre objet ? Ajoutez-le.</b></h5>
@@ -50,7 +50,7 @@
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
           <button (click)="createNewItem()" type="button" class="btn btn-default btn-block room-action-button">
-                  <i class="glyphicon glyphicon-ok"></i> Créer
+                  <i class="fa fa-ok"></i> Créer
                 </button>
         </div>
       </div>

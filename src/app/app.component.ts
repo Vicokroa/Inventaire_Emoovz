@@ -47,22 +47,34 @@ export class AppComponent implements OnInit, AfterViewInit {
     })
   }
 
+  /**
+   * Force room list to hide
+   */
   hideRoomList() {
     this.displayList = false;
     this.newRoom = '';
   }
 
+  /**
+   * Toggle between show or hide the room list
+   */
   toggleRoomList() {
     this.displayList = !this.displayList;
     this.newRoom = '';
     this.showAddRoomDialog = false;
   }
 
+  /**
+   * Show the new room dialog
+   */
   showRoomDialog() {
     this.showAddRoomDialog = true;
     this.newRoom = '';
   }
 
+  /**
+   * Validate and create the new room
+   */
   validateNewRoom() {
     if (this.newRoom !== '') {
       let tmpRoom = this.inventoryService.createRoom(this.roomCollection.length + 1, this.newRoom);
@@ -73,6 +85,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * Add room to the inventory room collection
+   * @param room room to add
+   */
   checkRoomForInventory(room: Room) {
     room.selected = !room.selected;
     if (room.selected) {
@@ -84,6 +100,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * add new created item to room inventoryitem collection
+   * @param item item to add
+   */
   addNewItemToRoom(item: InventoryItem) {
     this.roomCollection.forEach(room => {
       room.searchingInventoryItemCollection = [

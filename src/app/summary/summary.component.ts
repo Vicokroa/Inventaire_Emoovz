@@ -20,11 +20,21 @@ export class SummaryComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Decrease quantity of an inventoryItem for one room
+   * @param room room to decrease inventoryItem quantity
+   * @param inventoryItem inventory item to decrease quantity
+   */
   removeOne(room: Room, inventoryItem: InventoryItem) {
     this.roomCollection.find(_room => _room.id === room.id)
     .inventoryItemCollection.find(_item => _item.id === inventoryItem.id).quantity--;
   }
 
+  /**
+   * Increase quantity of an inventoryItem for one room
+   * @param room room to increase inventoryItem quantity
+   * @param inventoryItem inventory item to increase quantity
+   */
   addOne(room: Room, inventoryItem: InventoryItem) {
     this.roomCollection.find(_room => _room.id === room.id)
     .inventoryItemCollection.find(_item => _item.id === inventoryItem.id).quantity++;

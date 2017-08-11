@@ -41,6 +41,9 @@ export class RoomComponent implements OnInit {
   showNewItemBox = false;
   takeMax = 9;
 
+  /**
+   * inventoryItemCollection effectively into the room object collection
+   */
   get inventoryItemCollection(): InventoryItem[] {
         return this.room.searchingInventoryItemCollection.filter(item => item.quantity > 0);
     }
@@ -60,14 +63,25 @@ export class RoomComponent implements OnInit {
     }
     this.showSearchPanel = false;
   }
+
+  /**
+   * display the search panel
+   */
   activateSearchPanel() {
     this.showSearchPanel = true;
   }
 
+  /**
+   * check if one room can be displayed to the summary
+   */
   get isOkForSummary() {
     return this.inventoryItemCollection.some(item => item.quantity > 0);
   }
 
+  /**
+   * Show or hide the new item box
+   * @param show show or hide boolean
+   */
   openCloseNewItemBox(show: boolean) {
 
     this.showNewItemBox = show;
@@ -79,6 +93,9 @@ export class RoomComponent implements OnInit {
 
   }
 
+  /**
+   * 
+   */
   createNewItem() {
     if (this.newItemName !== '' && this.verifNumbers()) {
       let tmpItem = this.inventoryItemService.createItem(

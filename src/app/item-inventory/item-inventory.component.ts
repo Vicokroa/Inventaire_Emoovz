@@ -33,26 +33,40 @@ export class ItemInventoryComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * increase by 1 an element quantity
+   * @param event event to stop
+   */
   addElement(event) {
-    console.log('Add elemnt', typeof (this.inventoryItem.quantity));
     event.stopPropagation();
     this.inventoryItem.quantity++;
   }
 
+  /**
+   * set to 0 item quantity
+   * @param event event to stop
+   */
   deleteConfirm(event) {
     event.stopPropagation();
     this.displayDeleteBox = false;
     this.inventoryItem.quantity = 0;
   }
 
+  /**
+   * abort delete action
+   * @param event event to stop
+   */
   deleteCancel(event) {
     event.stopPropagation();
     this.displayDeleteBox = false;
   }
 
+  /**
+   * decrease by 1 an element quantity
+   * @param event event to stop
+   */
   removeElement(event) {
     event.stopPropagation();
-    console.log('Remove elemnt', typeof (this.inventoryItem.quantity));
     if (this.inventoryItem.quantity === 1) {
       this.displayDeleteBox = true;
     } else if (this.inventoryItem.quantity > 1) {
@@ -61,15 +75,19 @@ export class ItemInventoryComponent implements OnInit {
 
   }
 
+  /**
+   * action to do on focusin quantity input
+   */
   inputEnter() {
-    // this.previousQuantity = this.inventoryItem.quantity;
-    console.log('input enter', typeof (this.inventoryItem.quantity));
+    this.previousQuantity = this.inventoryItem.quantity;
   }
 
+  /**
+   * action to do on focusout quantity input
+   */
   inputOut() {
-    console.log('input out', typeof (this.inventoryItem.quantity));
-    // if (isNaN(this.inventoryItem.quantity)) {
-      // this.inventoryItem.quantity = this.previousQuantity;
-    // }
+    if (isNaN(this.inventoryItem.quantity)) {
+      this.inventoryItem.quantity = this.previousQuantity;
+    }
   }
 }
