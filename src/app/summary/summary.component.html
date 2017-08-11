@@ -24,9 +24,9 @@
           <li class="summary-item" *ngFor="let item of room.inventoryForSummary">
             <span class="summary-item-name">{{item.name}}</span>
             <span class="summary-item-quantity">
-             <button class="btn btn-default" type="button" (click)="removeOne(room, item)">-</button>
+             <button class="btn btn-default" type="button" (click)="removeOne(room, item)"><i class="fa fa-minus"></i></button>
              <span class="summary-item-quantity-value">{{item.quantity}}</span>
-             <button type="button" class="btn btn-default" (click)="addOne(room, item)">+</button>
+             <button type="button" class="btn btn-default" (click)="addOne(room, item)"><i class="fa fa-plus"></i></button>
             </span>
           </li>
         </ul>

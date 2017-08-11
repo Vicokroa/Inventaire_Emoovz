@@ -11,9 +11,9 @@
     </p>
   </div>
   <div class="item-quantity">
-    <button (click)="removeElement($event)" class="btn btn-default" type="button"><i class="glyphicon glyphicon-minus"></i></button>
+    <button (click)="removeElement($event)" class="btn btn-default" type="button"><i class="fa fa-minus"></i></button>
     <input (focusin)="inputEnter()" (focusout)="inputOut()" (click)="$event.stopPropagation();" [(ngModel)]="inventoryItem.quantity" />
-    <button (click)="addElement($event)" type="button" class="btn btn-default" ><i class="glyphicon glyphicon-plus"></i></button>
+    <button (click)="addElement($event)" type="button" class="btn btn-default" ><i class="fa fa-plus"></i></button>
   </div>
  
   <div class="delete-item-box" *ngIf="displayDeleteBox" [@displayDeleteBox] (click)="$event.stopPropagation();">
