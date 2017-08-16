@@ -39,7 +39,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     $(window).on('scroll', function () {
-      if ($(this).scrollTop() > 200) {
+      if ($(this).scrollTop() > 250) {
         $('.summary-section').addClass('fixedSummary');
       } else {
         $('.summary-section').removeClass('fixedSummary');
