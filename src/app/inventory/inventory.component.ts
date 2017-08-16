@@ -11,13 +11,13 @@ import { InventoryItem } from '../model/inventory-item';
   animations: [
     trigger('displayRoomInventory', [
       transition(':enter', [
-        style({transform: 'translateY(-100%)'}),
-        animate(350)
+        style({ height: 0}),
+        animate('0.2s ease-in', style({ height: '*'}))
       ]),
       transition(':leave', [
         group([
-          animate('0.2s ease', style({
-            transform: 'translateY(-100%)'
+          animate('0.2s ease-in', style({
+            height: 0
           })),
         ])
       ])
