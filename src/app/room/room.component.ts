@@ -14,13 +14,13 @@ import { InventoryItem } from '../model/inventory-item';
   animations: [
     trigger('displaySearchBox', [
       transition(':enter', [
-        style({transform: 'translateY(-100%)'}),
+        style({transform: 'translateX(-100%)'}),
         animate(350)
       ]),
       transition(':leave', [
         group([
           animate('0.2s ease', style({
-            transform: 'translateY(-100%)'
+            opacity: 0
           })),
         ])
       ])
