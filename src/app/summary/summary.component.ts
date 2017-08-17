@@ -10,10 +10,10 @@ import { InventoryItem } from '../model/inventory-item';
 })
 export class SummaryComponent implements OnInit {
   @Input() roomCollection: Room[];
-  get volume(): string {
+  get volume(): number {
     let totalVolume = 0;
     this.roomCollection.forEach(_room => totalVolume += (+_room.volume));
-    return totalVolume.toFixed(2);
+    return +totalVolume.toFixed(2);
   }
   constructor() { }
 

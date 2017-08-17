@@ -4,6 +4,7 @@ import { trigger, style, transition, animate, group } from '@angular/animations'
 import { InventoryItemService } from '../service/inventory-item.service';
 import { Room } from '../model/room';
 import { InventoryItem } from '../model/inventory-item';
+
 @Component({
   selector: 'app-room',
   templateUrl: './room.component.html',
@@ -41,6 +42,7 @@ export class RoomComponent implements OnInit {
   newItemHeight: number;
   showNewItemBox = false;
   takeMax = 9;
+  query: string;
 
   /**
    * inventoryItemCollection effectively into the room object collection
@@ -51,6 +53,7 @@ export class RoomComponent implements OnInit {
   constructor(private elementRef: ElementRef, private inventoryItemService: InventoryItemService) { }
 
   ngOnInit() {
+
   }
 
   outRoomClickListener(event) {

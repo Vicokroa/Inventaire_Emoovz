@@ -4,7 +4,7 @@
   <div class="col-md-5">
     <div class="input-group">
       <span class="input-group-addon"><i class="fa fa-search"></i></span>
-      <input (click)="activateSearchPanel()" type="text" class="form-control query" [(ngModel)]="query" placeholder="Trouver des objets..." />
+      <input id="room-{{room.id}}" (click)="activateSearchPanel()" type="text" class="form-control query" [(ngModel)]="query" placeholder="Trouver des objets..." />
     </div>
   </div>
 
@@ -67,6 +67,8 @@
         <app-item-inventory [inventoryItem]="inventory"></app-item-inventory>
       </li>
     </ul>
+
+
   </div>
 </div>
 
